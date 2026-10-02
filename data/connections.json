@@ -1,0 +1,3158 @@
+{
+ "meta": {
+  "csv": "data/Student Performance and Behaviour.csv",
+  "target": "Final_Exam_Score",
+  "rows_total": 500000,
+  "rows_used": 200000,
+  "discovery": 100000,
+  "holdout": 100000,
+  "alpha": 0.05,
+  "types": {
+   "Semester_ID": "num",
+   "Age": "num",
+   "Gender": "cat",
+   "Region_Type": "cat",
+   "Family_Size": "num",
+   "Major_Subject": "cat",
+   "University_Name": "cat",
+   "Home_City": "cat",
+   "Parent_Education": "cat",
+   "Family_Income_Level": "cat",
+   "Internet_Quality": "num",
+   "Study_Space_Quality": "num",
+   "Previous_GPA": "num",
+   "Number_of_Failed_Courses": "num",
+   "Total_Credits_Earned": "num",
+   "Weekly_Study_Hours": "num",
+   "Attendance_Rate": "num",
+   "Library_Visits_Per_Month": "num",
+   "Extracurricular_Hours": "num",
+   "Sleep_Hours": "num",
+   "Social_Media_Usage_Hours": "num",
+   "Stress_Level": "num",
+   "Motivation_Score": "num",
+   "Self_Efficacy_Score": "num",
+   "Midterm_Mark": "num",
+   "Final_Exam_Score": "num"
+  },
+  "notes": [
+   "Student_ID: looks like an ID, dropped"
+  ],
+  "n_findings": 81,
+  "n_failed_replication": 8,
+  "seconds": 141.4
+ },
+ "findings": [
+  {
+   "type": "pairwise",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Library_Visits_Per_Month"
+   ],
+   "effect": 0.8242,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.8251,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.5,
+   "details": {
+    "r": 0.82389,
+    "rho": 0.82417,
+    "eta": 0.81854,
+    "mi_bits": 0.7069,
+    "nonlinear_share": 0.0,
+    "explained_away_share": 0.0,
+    "explained_by": "Sleep_Hours",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 41.208,
+   "sentence": "Weekly study hours and library visits per month are linked (max(|r|,|rho|,eta) = 0.82, higher goes with higher).",
+   "rank": 1,
+   "id": "F001"
+  },
+  {
+   "type": "nonlinear",
+   "variables": [
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.3634,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3655,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.9221,
+   "details": {
+    "r": -0.14349,
+    "rho": -0.13382,
+    "eta": 0.36341,
+    "mi_bits": 0.08411,
+    "nonlinear_share": 0.8442,
+    "explained_away_share": 0.0,
+    "explained_by": "Social_Media_Usage_Hours",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 33.51,
+   "sentence": "Stress level and final exam score have a curved relationship. A straight line captures |r| = 0.14, but binned means show η = 0.36, so 84% of the explained variation is non-linear.",
+   "rank": 2,
+   "id": "F002"
+  },
+  {
+   "type": "nonlinear",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.5074,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.5085,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.6103,
+   "details": {
+    "r": 0.44383,
+    "rho": 0.5074,
+    "eta": 0.50265,
+    "mi_bits": 0.20517,
+    "nonlinear_share": 0.22056,
+    "explained_away_share": 0.44,
+    "explained_by": "Library_Visits_Per_Month",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 30.966,
+   "sentence": "Weekly study hours and final exam score have a curved relationship. A straight line captures |r| = 0.44, but binned means show η = 0.50, so 22% of the explained variation is non-linear.",
+   "rank": 3,
+   "id": "F003"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours > 33.7 (top 3%)",
+    "Stress_Level ≥ 7.2"
+   ],
+   "effect": 0.2846,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.2844,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": -2.92509,
+    "coverage": 0.01041,
+    "n": 1041,
+    "mean_in": 37.15389,
+    "mean_out": 57.7503,
+    "mean_all": 57.53589,
+    "beyond_additive": -20.8255,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 1042,
+    "holdout_d": -2.92169
+   },
+   "significance": 1.0,
+   "replication": 0.999,
+   "score": 28.443,
+   "sentence": "Pocket: students with Weekly_Study_Hours > 33.7 (top 3%) AND Stress_Level ≥ 7.2 score -20.4 vs average on final exam score, which is -20.8 points more than a model of separate (additive) effects predicts (1.04% of students).",
+   "rank": 4,
+   "id": "F004"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Midterm_Mark",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.6724,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.6746,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.4219,
+   "details": {
+    "r": 0.66998,
+    "rho": 0.67086,
+    "eta": 0.67239,
+    "mi_bits": 0.38303,
+    "nonlinear_share": 0.00726,
+    "explained_away_share": 0.156,
+    "explained_by": "Weekly_Study_Hours",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 28.366,
+   "sentence": "Midterm mark and final exam score are linked (max(|r|,|rho|,eta) = 0.67, higher goes with higher).",
+   "rank": 5,
+   "id": "F005"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Region_Type",
+    "Internet_Quality"
+   ],
+   "effect": 0.5228,
+   "effect_metric": "correlation ratio eta",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.5175,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.5,
+   "details": {
+    "r": null,
+    "rho": null,
+    "eta": null,
+    "mi_bits": 0.20835,
+    "nonlinear_share": null,
+    "explained_away_share": 0.0,
+    "explained_by": null,
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 0.99,
+   "score": 25.874,
+   "sentence": "Region type and internet quality are linked (correlation ratio eta = 0.52).",
+   "rank": 6,
+   "id": "F006"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Library_Visits_Per_Month",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours ≥ 24.8",
+    "Library_Visits_Per_Month < 8",
+    "Stress_Level ≥ 6.4"
+   ],
+   "effect": 0.241,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.2373,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": -5.53059,
+    "coverage": 0.00202,
+    "n": 202,
+    "mean_in": 15.39158,
+    "mean_out": 57.62119,
+    "mean_all": 57.53589,
+    "beyond_additive": -39.70948,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 197,
+    "holdout_d": -5.51002
+   },
+   "significance": 1.0,
+   "replication": 0.985,
+   "score": 23.734,
+   "sentence": "Pocket: students with Weekly_Study_Hours ≥ 24.8 AND Library_Visits_Per_Month < 8 AND Stress_Level ≥ 6.4 score -42.1 vs average on final exam score, which is -39.7 points more than a model of separate (additive) effects predicts (0.20% of students).",
+   "rank": 7,
+   "id": "F007"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours > 33.7 (top 3%)",
+    "Stress_Level > 9.4 (top 3%)"
+   ],
+   "effect": 0.2408,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.2355,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": -4.90925,
+    "coverage": 0.00256,
+    "n": 256,
+    "mean_in": 21.44141,
+    "mean_out": 57.62853,
+    "mean_all": 57.53589,
+    "beyond_additive": -35.2292,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 246,
+    "holdout_d": -4.89215
+   },
+   "significance": 1.0,
+   "replication": 0.978,
+   "score": 23.553,
+   "sentence": "Pocket: students with Weekly_Study_Hours > 33.7 (top 3%) AND Stress_Level > 9.4 (top 3%) score -36.1 vs average on final exam score, which is -35.2 points more than a model of separate (additive) effects predicts (0.26% of students).",
+   "rank": 8,
+   "id": "F008"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Motivation_Score",
+    "Self_Efficacy_Score"
+   ],
+   "effect": 0.4537,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.4577,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.5,
+   "details": {
+    "r": 0.45366,
+    "rho": 0.44123,
+    "eta": 0.44764,
+    "mi_bits": 0.14202,
+    "nonlinear_share": 0.0,
+    "explained_away_share": 0.0,
+    "explained_by": "Family_Size",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 22.683,
+   "sentence": "Motivation score and self efficacy score are linked (max(|r|,|rho|,eta) = 0.45, higher goes with higher).",
+   "rank": 9,
+   "id": "F009"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours > 37.4 (top 1%)",
+    "Stress_Level ≥ 7.2"
+   ],
+   "effect": 0.2349,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.2267,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": -3.7454,
+    "coverage": 0.00418,
+    "n": 418,
+    "mean_in": 30.31794,
+    "mean_out": 57.65014,
+    "mean_all": 57.53589,
+    "beyond_additive": -26.83364,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 416,
+    "holdout_d": -3.61709
+   },
+   "significance": 1.0,
+   "replication": 0.965,
+   "score": 22.675,
+   "sentence": "Pocket: students with Weekly_Study_Hours > 37.4 (top 1%) AND Stress_Level ≥ 7.2 score -27.2 vs average on final exam score, which is -26.8 points more than a model of separate (additive) effects predicts (0.42% of students).",
+   "rank": 10,
+   "id": "F010"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Previous_GPA",
+    "Self_Efficacy_Score"
+   ],
+   "effect": 0.3901,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3864,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.5,
+   "details": {
+    "r": 0.39013,
+    "rho": 0.37858,
+    "eta": 0.38453,
+    "mi_bits": 0.10272,
+    "nonlinear_share": 0.0,
+    "explained_away_share": 0.0,
+    "explained_by": "Number_of_Failed_Courses",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 0.99,
+   "score": 19.319,
+   "sentence": "Previous gpa and self efficacy score are linked (max(|r|,|rho|,eta) = 0.39, higher goes with higher).",
+   "rank": 11,
+   "id": "F011"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Previous_GPA",
+    "Midterm_Mark"
+   ],
+   "effect": 0.4647,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.4633,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.4018,
+   "details": {
+    "r": 0.45827,
+    "rho": 0.4603,
+    "eta": 0.46468,
+    "mi_bits": 0.15708,
+    "nonlinear_share": 0.02771,
+    "explained_away_share": 0.196,
+    "explained_by": "Self_Efficacy_Score",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 0.997,
+   "score": 18.616,
+   "sentence": "Previous gpa and midterm mark are linked (max(|r|,|rho|,eta) = 0.46, higher goes with higher).",
+   "rank": 12,
+   "id": "F012"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Attendance_Rate",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Attendance_Rate < 41.9 (bottom 1%)"
+   ],
+   "effect": 0.2191,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.2324,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.8,
+   "details": {
+    "cohen_d": 2.26044,
+    "coverage": 0.00997,
+    "n": 997,
+    "mean_in": 71.20752,
+    "mean_out": 57.39821,
+    "mean_all": 57.53589,
+    "beyond_additive": 16.10059,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 980,
+    "holdout_d": 2.42604
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 17.53,
+   "sentence": "Pocket: students with Attendance_Rate < 41.9 (bottom 1%) score +13.7 vs average on final exam score, which is +16.1 points more than a model of separate (additive) effects predicts (1.00% of students).",
+   "rank": 13,
+   "id": "F013"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Final_Exam_Score",
+    "Stress_Level"
+   ],
+   "effect": 0.2474,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.2492,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.44383,
+    "r_pooled": 0.48254,
+    "r_strata": [
+     0.53867,
+     0.57013,
+     0.32273
+    ],
+    "n_strata": [
+     33228,
+     32804,
+     33968
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 17.318,
+   "sentence": "Weekly study hours → final exam score: marginal r = +0.44, within levels of stress level r = +0.48. The strength depends on stress level (stratum r from +0.32 to +0.57).",
+   "rank": 14,
+   "id": "F014"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Previous_GPA",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.4392,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.4349,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.3975,
+   "details": {
+    "r": 0.41888,
+    "rho": 0.43451,
+    "eta": 0.43925,
+    "mi_bits": 0.13901,
+    "nonlinear_share": 0.09093,
+    "explained_away_share": 0.205,
+    "explained_by": "Self_Efficacy_Score",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 0.99,
+   "score": 17.287,
+   "sentence": "Previous gpa and final exam score are linked (max(|r|,|rho|,eta) = 0.44, higher goes with higher).",
+   "rank": 15,
+   "id": "F015"
+  },
+  {
+   "type": "nonlinear",
+   "variables": [
+    "Stress_Level",
+    "Midterm_Mark"
+   ],
+   "effect": 0.1741,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1747,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.9499,
+   "details": {
+    "r": -0.05516,
+    "rho": -0.06198,
+    "eta": 0.17409,
+    "mi_bits": 0.01973,
+    "nonlinear_share": 0.89988,
+    "explained_away_share": 0.001,
+    "explained_by": "Social_Media_Usage_Hours",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 16.537,
+   "sentence": "Stress level and midterm mark have a curved relationship. A straight line captures |r| = 0.06, but binned means show η = 0.17, so 90% of the explained variation is non-linear.",
+   "rank": 16,
+   "id": "F016"
+  },
+  {
+   "type": "conditional_vanishes",
+   "variables": [
+    "Library_Visits_Per_Month",
+    "Final_Exam_Score",
+    "Weekly_Study_Hours"
+   ],
+   "effect": 0.266,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.2655,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.6,
+   "details": {
+    "r_marginal": 0.4249,
+    "r_pooled": 0.15885,
+    "r_strata": [
+     0.16139,
+     0.05411,
+     0.25751
+    ],
+    "n_strata": [
+     33139,
+     33394,
+     33467
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 0.998,
+   "score": 15.93,
+   "sentence": "Library visits per month → final exam score: marginal r = +0.42, within levels of weekly study hours r = +0.16. The link largely vanishes once weekly study hours is accounted for, so weekly study hours is the likely real driver (confounder or mediator).",
+   "rank": 17,
+   "id": "F017"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Previous_GPA",
+    "Weekly_Study_Hours",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Previous_GPA ≥ 3.39",
+    "Weekly_Study_Hours > 33.7 (top 3%)",
+    "Stress_Level ≥ 7.2"
+   ],
+   "effect": 0.1471,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1469,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": -3.27139,
+    "coverage": 0.00207,
+    "n": 207,
+    "mean_in": 41.0,
+    "mean_out": 57.57019,
+    "mean_all": 57.53589,
+    "beyond_additive": -23.48729,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 196,
+    "holdout_d": -3.35706
+   },
+   "significance": 1.0,
+   "replication": 0.999,
+   "score": 14.687,
+   "sentence": "Pocket: students with Previous_GPA ≥ 3.39 AND Weekly_Study_Hours > 33.7 (top 3%) AND Stress_Level ≥ 7.2 score -16.5 vs average on final exam score, which is -23.5 points more than a model of separate (additive) effects predicts (0.21% of students).",
+   "rank": 18,
+   "id": "F018"
+  },
+  {
+   "type": "interaction2",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Library_Visits_Per_Month",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.1825,
+   "effect_metric": "sqrt(ΔR² non-additive, chance-corrected)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1784,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.8192,
+   "details": {
+    "delta_r2": 0.03331,
+    "r2_full": 0.2431,
+    "r2_additive": 0.20964,
+    "synergy_share": 0.13701,
+    "df": 16,
+    "interaction_info_bits": -0.12892,
+    "gbm_friedman_H2": 0.0279
+   },
+   "significance": 1.0,
+   "replication": 0.978,
+   "score": 14.616,
+   "sentence": "weekly study hours × library visits per month jointly affect final exam score in a non-additive way. Their combination explains an extra 3.33% of variance beyond their separate effects (additive R² 0.210 → 0.243).",
+   "rank": 19,
+   "id": "F019"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours ≥ 24.8",
+    "Stress_Level > 9.4 (top 3%)"
+   ],
+   "effect": 0.1486,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1421,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": -1.8276,
+    "coverage": 0.00681,
+    "n": 681,
+    "mean_in": 44.07357,
+    "mean_out": 57.62819,
+    "mean_all": 57.53589,
+    "beyond_additive": -13.05915,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 660,
+    "holdout_d": -1.77276
+   },
+   "significance": 1.0,
+   "replication": 0.956,
+   "score": 14.209,
+   "sentence": "Pocket: students with Weekly_Study_Hours ≥ 24.8 AND Stress_Level > 9.4 (top 3%) score -13.5 vs average on final exam score, which is -13.1 points more than a model of separate (additive) effects predicts (0.68% of students).",
+   "rank": 20,
+   "id": "F020"
+  },
+  {
+   "type": "nonlinear",
+   "variables": [
+    "Attendance_Rate",
+    "Midterm_Mark"
+   ],
+   "effect": 0.152,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1592,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.9194,
+   "details": {
+    "r": 0.05564,
+    "rho": 0.15196,
+    "eta": 0.13822,
+    "mi_bits": 0.01738,
+    "nonlinear_share": 0.83873,
+    "explained_away_share": 0.0,
+    "explained_by": "Sleep_Hours",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 13.97,
+   "sentence": "Attendance rate and midterm mark have a curved relationship. A straight line captures |r| = 0.06, but binned means show η = 0.14, so 84% of the explained variation is non-linear.",
+   "rank": 21,
+   "id": "F021"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Midterm_Mark"
+   ],
+   "effect": 0.4782,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.4774,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.2899,
+   "details": {
+    "r": 0.47417,
+    "rho": 0.47757,
+    "eta": 0.47823,
+    "mi_bits": 0.17065,
+    "nonlinear_share": 0.01722,
+    "explained_away_share": 0.42,
+    "explained_by": "Library_Visits_Per_Month",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 0.998,
+   "score": 13.839,
+   "sentence": "Weekly study hours and midterm mark are linked (max(|r|,|rho|,eta) = 0.48, higher goes with higher).",
+   "rank": 22,
+   "id": "F022"
+  },
+  {
+   "type": "nonlinear",
+   "variables": [
+    "Attendance_Rate",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.1432,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1489,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.9051,
+   "details": {
+    "r": 0.05659,
+    "rho": 0.1432,
+    "eta": 0.12957,
+    "mi_bits": 0.01537,
+    "nonlinear_share": 0.81021,
+    "explained_away_share": 0.0,
+    "explained_by": "Sleep_Hours",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 12.962,
+   "sentence": "Attendance rate and final exam score have a curved relationship. A straight line captures |r| = 0.06, but binned means show η = 0.13, so 81% of the explained variation is non-linear.",
+   "rank": 23,
+   "id": "F023"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Self_Efficacy_Score",
+    "Midterm_Mark"
+   ],
+   "effect": 0.3855,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3904,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.3287,
+   "details": {
+    "r": 0.38075,
+    "rho": 0.37896,
+    "eta": 0.38554,
+    "mi_bits": 0.10302,
+    "nonlinear_share": 0.02518,
+    "explained_away_share": 0.343,
+    "explained_by": "Previous_GPA",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 12.672,
+   "sentence": "Self efficacy score and midterm mark are linked (max(|r|,|rho|,eta) = 0.39, higher goes with higher).",
+   "rank": 24,
+   "id": "F024"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Attendance_Rate",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours < 11.3",
+    "Attendance_Rate < 41.9 (bottom 1%)"
+   ],
+   "effect": 0.122,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1582,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": 2.58804,
+    "coverage": 0.00226,
+    "n": 226,
+    "mean_in": 66.39823,
+    "mean_out": 57.51581,
+    "mean_all": 57.53589,
+    "beyond_additive": 18.57754,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 194,
+    "holdout_d": 3.64058
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 12.198,
+   "sentence": "Pocket: students with Weekly_Study_Hours < 11.3 AND Attendance_Rate < 41.9 (bottom 1%) score +8.9 vs average on final exam score, which is +18.6 points more than a model of separate (additive) effects predicts (0.23% of students).",
+   "rank": 25,
+   "id": "F025"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Library_Visits_Per_Month",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours ≥ 24.8",
+    "Library_Visits_Per_Month 8–10",
+    "Stress_Level ≥ 7.2"
+   ],
+   "effect": 0.1218,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1218,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": -2.52999,
+    "coverage": 0.00236,
+    "n": 236,
+    "mean_in": 38.05,
+    "mean_out": 57.58198,
+    "mean_all": 57.53589,
+    "beyond_additive": -18.15903,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 254,
+    "holdout_d": -2.43818
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 12.181,
+   "sentence": "Pocket: students with Weekly_Study_Hours ≥ 24.8 AND Library_Visits_Per_Month 8–10 AND Stress_Level ≥ 7.2 score -19.5 vs average on final exam score, which is -18.2 points more than a model of separate (additive) effects predicts (0.24% of students).",
+   "rank": 26,
+   "id": "F026"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Self_Efficacy_Score",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.3649,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3657,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.3256,
+   "details": {
+    "r": 0.3491,
+    "rho": 0.35979,
+    "eta": 0.36489,
+    "mi_bits": 0.092,
+    "nonlinear_share": 0.08519,
+    "explained_away_share": 0.349,
+    "explained_by": "Previous_GPA",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 11.879,
+   "sentence": "Self efficacy score and final exam score are linked (max(|r|,|rho|,eta) = 0.36, higher goes with higher).",
+   "rank": 27,
+   "id": "F027"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Attendance_Rate",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Attendance_Rate < 41.9 (bottom 1%)",
+    "Stress_Level ≥ 7.2"
+   ],
+   "effect": 0.1202,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1134,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": 2.51737,
+    "coverage": 0.00232,
+    "n": 232,
+    "mean_in": 67.29784,
+    "mean_out": 57.51319,
+    "mean_all": 57.53589,
+    "beyond_additive": 18.06921,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 196,
+    "holdout_d": 2.58034
+   },
+   "significance": 1.0,
+   "replication": 0.943,
+   "score": 11.339,
+   "sentence": "Pocket: students with Attendance_Rate < 41.9 (bottom 1%) AND Stress_Level ≥ 7.2 score +9.8 vs average on final exam score, which is +18.1 points more than a model of separate (additive) effects predicts (0.23% of students).",
+   "rank": 28,
+   "id": "F028"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours ≥ 24.8",
+    "Stress_Level ≥ 7.2"
+   ],
+   "effect": 0.1107,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1072,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": -0.53753,
+    "coverage": 0.04497,
+    "n": 4497,
+    "mean_in": 54.89649,
+    "mean_out": 57.66017,
+    "mean_all": 57.53589,
+    "beyond_additive": -3.69338,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 4604,
+    "holdout_d": -0.51448
+   },
+   "significance": 1.0,
+   "replication": 0.968,
+   "score": 10.72,
+   "sentence": "Pocket: students with Weekly_Study_Hours ≥ 24.8 AND Stress_Level ≥ 7.2 score -2.6 vs average on final exam score, which is -3.7 points more than a model of separate (additive) effects predicts (4.50% of students).",
+   "rank": 29,
+   "id": "F029"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Internet_Quality",
+    "Weekly_Study_Hours",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Internet_Quality < 4.6",
+    "Weekly_Study_Hours > 33.7 (top 3%)",
+    "Stress_Level ≥ 6.4"
+   ],
+   "effect": 0.1163,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1047,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": -2.46084,
+    "coverage": 0.00227,
+    "n": 227,
+    "mean_in": 39.27577,
+    "mean_out": 57.57743,
+    "mean_all": 57.53589,
+    "beyond_additive": -17.6643,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 258,
+    "holdout_d": -2.07451
+   },
+   "significance": 1.0,
+   "replication": 0.9,
+   "score": 10.466,
+   "sentence": "Pocket: students with Internet_Quality < 4.6 AND Weekly_Study_Hours > 33.7 (top 3%) AND Stress_Level ≥ 6.4 score -18.3 vs average on final exam score, which is -17.7 points more than a model of separate (additive) effects predicts (0.23% of students).",
+   "rank": 30,
+   "id": "F030"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Attendance_Rate",
+    "Library_Visits_Per_Month",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Attendance_Rate < 41.9 (bottom 1%)",
+    "Library_Visits_Per_Month ≥ 12"
+   ],
+   "effect": 0.1027,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0987,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": 1.96761,
+    "coverage": 0.00276,
+    "n": 276,
+    "mean_in": 75.01159,
+    "mean_out": 57.48752,
+    "mean_all": 57.53589,
+    "beyond_additive": 14.11691,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 272,
+    "holdout_d": 1.90342
+   },
+   "significance": 1.0,
+   "replication": 0.961,
+   "score": 9.865,
+   "sentence": "Pocket: students with Attendance_Rate < 41.9 (bottom 1%) AND Library_Visits_Per_Month ≥ 12 score +17.5 vs average on final exam score, which is +14.1 points more than a model of separate (additive) effects predicts (0.28% of students).",
+   "rank": 31,
+   "id": "F031"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Attendance_Rate",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Attendance_Rate < 41.9 (bottom 1%)",
+    "Stress_Level 5–6"
+   ],
+   "effect": 0.0906,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0987,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": 2.01049,
+    "coverage": 0.00205,
+    "n": 205,
+    "mean_in": 73.80439,
+    "mean_out": 57.50247,
+    "mean_all": 57.53589,
+    "beyond_additive": 14.43484,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 198,
+    "holdout_d": 2.23156
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 9.056,
+   "sentence": "Pocket: students with Attendance_Rate < 41.9 (bottom 1%) AND Stress_Level 5–6 score +16.3 vs average on final exam score, which is +14.4 points more than a model of separate (additive) effects predicts (0.21% of students).",
+   "rank": 32,
+   "id": "F032"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Library_Visits_Per_Month",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours > 33.7 (top 3%)",
+    "Library_Visits_Per_Month > 16 (top 3%)"
+   ],
+   "effect": 0.0899,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0857,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": 0.81211,
+    "coverage": 0.0125,
+    "n": 1250,
+    "mean_in": 71.36608,
+    "mean_out": 57.36082,
+    "mean_all": 57.53589,
+    "beyond_additive": 5.76966,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 1269,
+    "holdout_d": 0.76885
+   },
+   "significance": 1.0,
+   "replication": 0.954,
+   "score": 8.574,
+   "sentence": "Pocket: students with Weekly_Study_Hours > 33.7 (top 3%) AND Library_Visits_Per_Month > 16 (top 3%) score +13.8 vs average on final exam score, which is +5.8 points more than a model of separate (additive) effects predicts (1.25% of students).",
+   "rank": 33,
+   "id": "F033"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Internet_Quality",
+    "Weekly_Study_Hours",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Internet_Quality ≥ 7.7",
+    "Weekly_Study_Hours ≥ 24.8",
+    "Stress_Level > 9.4 (top 3%)"
+   ],
+   "effect": 0.0862,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0819,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 1.0,
+   "details": {
+    "cohen_d": -1.80183,
+    "coverage": 0.00231,
+    "n": 231,
+    "mean_in": 46.32597,
+    "mean_out": 57.56184,
+    "mean_all": 57.53589,
+    "beyond_additive": -12.9333,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 234,
+    "holdout_d": -1.70146
+   },
+   "significance": 1.0,
+   "replication": 0.951,
+   "score": 8.193,
+   "sentence": "Pocket: students with Internet_Quality ≥ 7.7 AND Weekly_Study_Hours ≥ 24.8 AND Stress_Level > 9.4 (top 3%) score -11.2 vs average on final exam score, which is -12.9 points more than a model of separate (additive) effects predicts (0.23% of students).",
+   "rank": 34,
+   "id": "F034"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Previous_GPA",
+    "Final_Exam_Score",
+    "Weekly_Study_Hours"
+   ],
+   "effect": 0.1256,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1158,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.41888,
+    "r_pooled": 0.4729,
+    "r_strata": [
+     0.49586,
+     0.52181,
+     0.39626
+    ],
+    "n_strata": [
+     33139,
+     33394,
+     33467
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 0.922,
+   "score": 8.107,
+   "sentence": "Previous gpa → final exam score: marginal r = +0.42, within levels of weekly study hours r = +0.47. The strength depends on weekly study hours (stratum r from +0.40 to +0.52).",
+   "rank": 35,
+   "id": "F035"
+  },
+  {
+   "type": "subgroup",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Library_Visits_Per_Month",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours ≥ 24.8",
+    "Library_Visits_Per_Month ≥ 11"
+   ],
+   "effect": 0.3192,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3189,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.2402,
+   "details": {
+    "cohen_d": 0.87601,
+    "coverage": 0.1803,
+    "n": 18030,
+    "mean_in": 65.68808,
+    "mean_out": 55.74274,
+    "mean_all": 57.53589,
+    "beyond_additive": 0.86545,
+    "beyond_additive_share": 0.10616,
+    "holdout_n": 18229,
+    "holdout_d": 0.87159
+   },
+   "significance": 1.0,
+   "replication": 0.999,
+   "score": 7.662,
+   "sentence": "Students with Weekly_Study_Hours ≥ 24.8 AND Library_Visits_Per_Month ≥ 11 average 65.7 on final exam score vs 55.7 for everyone else (d = +0.88, 18.0% of students). +0.9 points of that are beyond what the factors predict separately.",
+   "rank": 36,
+   "id": "F036"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours > 37.4 (top 1%)"
+   ],
+   "effect": 0.0995,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0913,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.8,
+   "details": {
+    "cohen_d": -1.02289,
+    "coverage": 0.00965,
+    "n": 965,
+    "mean_in": 55.60684,
+    "mean_out": 57.55468,
+    "mean_all": 57.53589,
+    "beyond_additive": -7.28817,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 992,
+    "holdout_d": -0.92507
+   },
+   "significance": 1.0,
+   "replication": 0.918,
+   "score": 7.304,
+   "sentence": "Pocket: students with Weekly_Study_Hours > 37.4 (top 1%) score -1.9 vs average on final exam score, which is -7.3 points more than a model of separate (additive) effects predicts (0.97% of students).",
+   "rank": 37,
+   "id": "F037"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Stress_Level",
+    "Final_Exam_Score",
+    "Weekly_Study_Hours"
+   ],
+   "effect": 0.102,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1125,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": -0.14349,
+    "r_pooled": -0.15993,
+    "r_strata": [
+     -0.12602,
+     -0.1251,
+     -0.22706
+    ],
+    "n_strata": [
+     33139,
+     33394,
+     33467
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 7.137,
+   "sentence": "Stress level → final exam score: marginal r = -0.14, within levels of weekly study hours r = -0.16. The strength depends on weekly study hours (stratum r from -0.23 to -0.13).",
+   "rank": 38,
+   "id": "F038"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Final_Exam_Score",
+    "Library_Visits_Per_Month"
+   ],
+   "effect": 0.1158,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1016,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.44383,
+    "r_pooled": 0.25304,
+    "r_strata": [
+     0.2236,
+     0.20363,
+     0.31946
+    ],
+    "n_strata": [
+     32639,
+     30976,
+     36385
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 0.877,
+   "score": 7.115,
+   "sentence": "Weekly study hours → final exam score: marginal r = +0.44, within levels of library visits per month r = +0.25. The strength depends on library visits per month (stratum r from +0.20 to +0.32).",
+   "rank": 39,
+   "id": "F039"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Self_Efficacy_Score",
+    "Final_Exam_Score",
+    "Weekly_Study_Hours"
+   ],
+   "effect": 0.1001,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1004,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.3491,
+    "r_pooled": 0.39656,
+    "r_strata": [
+     0.41779,
+     0.43484,
+     0.33475
+    ],
+    "n_strata": [
+     33139,
+     33394,
+     33467
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 7.007,
+   "sentence": "Self efficacy score → final exam score: marginal r = +0.35, within levels of weekly study hours r = +0.40. The strength depends on weekly study hours (stratum r from +0.33 to +0.43).",
+   "rank": 40,
+   "id": "F040"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Internet_Quality",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.1393,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1389,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.4999,
+   "details": {
+    "r": 0.12952,
+    "rho": 0.13191,
+    "eta": 0.1393,
+    "mi_bits": 0.01284,
+    "nonlinear_share": 0.13943,
+    "explained_away_share": 0.0,
+    "explained_by": "Number_of_Failed_Courses",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 0.997,
+   "score": 6.941,
+   "sentence": "Internet quality and final exam score are linked (max(|r|,|rho|,eta) = 0.14, higher goes with higher).",
+   "rank": 41,
+   "id": "F041"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Internet_Quality",
+    "Final_Exam_Score",
+    "Weekly_Study_Hours"
+   ],
+   "effect": 0.0986,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0994,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.12952,
+    "r_pooled": 0.14222,
+    "r_strata": [
+     0.0861,
+     0.15461,
+     0.18472
+    ],
+    "n_strata": [
+     33139,
+     33394,
+     33467
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 6.904,
+   "sentence": "Internet quality → final exam score: marginal r = +0.13, within levels of weekly study hours r = +0.14. The strength depends on weekly study hours (stratum r from +0.09 to +0.18).",
+   "rank": 42,
+   "id": "F042"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours > 33.7 (top 3%)"
+   ],
+   "effect": 0.0894,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0858,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.8,
+   "details": {
+    "cohen_d": -0.53136,
+    "coverage": 0.02943,
+    "n": 2943,
+    "mean_in": 60.17577,
+    "mean_out": 57.45584,
+    "mean_all": 57.53589,
+    "beyond_additive": -3.71035,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 3021,
+    "holdout_d": -0.50301
+   },
+   "significance": 1.0,
+   "replication": 0.959,
+   "score": 6.862,
+   "sentence": "Pocket: students with Weekly_Study_Hours > 33.7 (top 3%) score +2.6 vs average on final exam score, which is -3.7 points more than a model of separate (additive) effects predicts (2.94% of students).",
+   "rank": 43,
+   "id": "F043"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Internet_Quality",
+    "Final_Exam_Score",
+    "Library_Visits_Per_Month"
+   ],
+   "effect": 0.0971,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.1037,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.12952,
+    "r_pooled": 0.14042,
+    "r_strata": [
+     0.09083,
+     0.13616,
+     0.18788
+    ],
+    "n_strata": [
+     32639,
+     30976,
+     36385
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 6.794,
+   "sentence": "Internet quality → final exam score: marginal r = +0.13, within levels of library visits per month r = +0.14. The strength depends on library visits per month (stratum r from +0.09 to +0.19).",
+   "rank": 44,
+   "id": "F044"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Attendance_Rate",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Attendance_Rate < 52 (bottom 3%)"
+   ],
+   "effect": 0.0841,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0942,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.8,
+   "details": {
+    "cohen_d": 0.49714,
+    "coverage": 0.0297,
+    "n": 2970,
+    "mean_in": 58.71862,
+    "mean_out": 57.49968,
+    "mean_all": 57.53589,
+    "beyond_additive": 3.47047,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 2965,
+    "holdout_d": 0.55756
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 6.728,
+   "sentence": "Pocket: students with Attendance_Rate < 52 (bottom 3%) score +1.2 vs average on final exam score, which is +3.5 points more than a model of separate (additive) effects predicts (2.97% of students).",
+   "rank": 45,
+   "id": "F045"
+  },
+  {
+   "type": "pocket",
+   "variables": [
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Stress_Level < 1.7 (bottom 3%)"
+   ],
+   "effect": 0.0825,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0808,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.8,
+   "details": {
+    "cohen_d": -0.50364,
+    "coverage": 0.02776,
+    "n": 2776,
+    "mean_in": 51.49524,
+    "mean_out": 57.70836,
+    "mean_all": 57.53589,
+    "beyond_additive": -3.52282,
+    "beyond_additive_share": 1.0,
+    "holdout_n": 2685,
+    "holdout_d": -0.50171
+   },
+   "significance": 1.0,
+   "replication": 0.98,
+   "score": 6.467,
+   "sentence": "Pocket: students with Stress_Level < 1.7 (bottom 3%) score -6.0 vs average on final exam score, which is -3.5 points more than a model of separate (additive) effects predicts (2.78% of students).",
+   "rank": 46,
+   "id": "F046"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Final_Exam_Score",
+    "Internet_Quality"
+   ],
+   "effect": 0.0964,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0823,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.44383,
+    "r_pooled": 0.44699,
+    "r_strata": [
+     0.39782,
+     0.44356,
+     0.49425
+    ],
+    "n_strata": [
+     31914,
+     34204,
+     33882
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 0.853,
+   "score": 5.759,
+   "sentence": "Weekly study hours → final exam score: marginal r = +0.44, within levels of internet quality r = +0.45. The strength depends on internet quality (stratum r from +0.40 to +0.49).",
+   "rank": 47,
+   "id": "F047"
+  },
+  {
+   "type": "interaction2",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.09,
+   "effect_metric": "sqrt(ΔR² non-additive, chance-corrected)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0892,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.6399,
+   "details": {
+    "delta_r2": 0.00809,
+    "r2_full": 0.32478,
+    "r2_additive": 0.31655,
+    "synergy_share": 0.02492,
+    "df": 16,
+    "interaction_info_bits": 0.0316,
+    "gbm_friedman_H2": 0.0944
+   },
+   "significance": 1.0,
+   "replication": 0.991,
+   "score": 5.706,
+   "sentence": "weekly study hours × stress level jointly affect final exam score in a non-additive way. Their combination explains an extra 0.81% of variance beyond their separate effects (additive R² 0.317 → 0.325).",
+   "rank": 48,
+   "id": "F048"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Previous_GPA",
+    "Final_Exam_Score",
+    "Stress_Level"
+   ],
+   "effect": 0.0828,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0807,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.41888,
+    "r_pooled": 0.44051,
+    "r_strata": [
+     0.45364,
+     0.47512,
+     0.39231
+    ],
+    "n_strata": [
+     33228,
+     32804,
+     33968
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 0.974,
+   "score": 5.647,
+   "sentence": "Previous gpa → final exam score: marginal r = +0.42, within levels of stress level r = +0.44. The strength depends on stress level (stratum r from +0.39 to +0.48).",
+   "rank": 49,
+   "id": "F049"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Library_Visits_Per_Month",
+    "Final_Exam_Score",
+    "Internet_Quality"
+   ],
+   "effect": 0.0762,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0766,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.4249,
+    "r_pooled": 0.42776,
+    "r_strata": [
+     0.38706,
+     0.42913,
+     0.46324
+    ],
+    "n_strata": [
+     31914,
+     34204,
+     33882
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 5.333,
+   "sentence": "Library visits per month → final exam score: marginal r = +0.42, within levels of internet quality r = +0.43. The strength depends on internet quality (stratum r from +0.39 to +0.46).",
+   "rank": 50,
+   "id": "F050"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Library_Visits_Per_Month",
+    "Final_Exam_Score",
+    "Stress_Level"
+   ],
+   "effect": 0.0732,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0765,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.4249,
+    "r_pooled": 0.44568,
+    "r_strata": [
+     0.45286,
+     0.47857,
+     0.4054
+    ],
+    "n_strata": [
+     33228,
+     32804,
+     33968
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 5.122,
+   "sentence": "Library visits per month → final exam score: marginal r = +0.42, within levels of stress level r = +0.45. The strength depends on stress level (stratum r from +0.41 to +0.48).",
+   "rank": 51,
+   "id": "F051"
+  },
+  {
+   "type": "subgroup",
+   "variables": [
+    "Previous_GPA",
+    "Weekly_Study_Hours",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Previous_GPA < 2.5",
+    "Weekly_Study_Hours < 14.6"
+   ],
+   "effect": 0.3331,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3341,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.1507,
+   "details": {
+    "cohen_d": -1.13189,
+    "coverage": 0.10941,
+    "n": 10941,
+    "mean_in": 46.09155,
+    "mean_out": 58.94184,
+    "mean_all": 57.53589,
+    "beyond_additive": 0.01008,
+    "beyond_additive_share": 0.00088,
+    "holdout_n": 10845,
+    "holdout_d": -1.13978
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 5.022,
+   "sentence": "Students with Previous_GPA < 2.5 AND Weekly_Study_Hours < 14.6 average 46.1 on final exam score vs 58.9 for everyone else (d = -1.13, 10.9% of students). +0.0 points of that are beyond what the factors predict separately.",
+   "rank": 52,
+   "id": "F052"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Motivation_Score",
+    "Midterm_Mark"
+   ],
+   "effect": 0.2541,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.2538,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.1976,
+   "details": {
+    "r": 0.25145,
+    "rho": 0.24891,
+    "eta": 0.25414,
+    "mi_bits": 0.04282,
+    "nonlinear_share": 0.02235,
+    "explained_away_share": 0.605,
+    "explained_by": "Self_Efficacy_Score",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 0.999,
+   "score": 5.016,
+   "sentence": "Motivation score and midterm mark are linked (max(|r|,|rho|,eta) = 0.25, higher goes with higher). Mostly explained by self efficacy score (60% of it disappears once that is held fixed).",
+   "rank": 53,
+   "id": "F053"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Semester_ID",
+    "Total_Credits_Earned"
+   ],
+   "effect": 0.9661,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.9657,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.05,
+   "details": {
+    "r": 0.95953,
+    "rho": 0.96612,
+    "eta": 0.96119,
+    "mi_bits": 1.51149,
+    "nonlinear_share": 0.00346,
+    "explained_away_share": 0.0,
+    "explained_by": "Social_Media_Usage_Hours",
+    "mechanical": true
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 4.828,
+   "sentence": "Semester id and total credits earned are linked (max(|r|,|rho|,eta) = 0.97, higher goes with higher). Near-deterministic, probably mechanical or definitional.",
+   "rank": 54,
+   "id": "F054"
+  },
+  {
+   "type": "interaction3",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Library_Visits_Per_Month",
+    "Stress_Level",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.0888,
+   "effect_metric": "sqrt(ΔR² non-additive, chance-corrected)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0744,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.6372,
+   "details": {
+    "delta_r2": 0.00789,
+    "r2_full": 0.33928,
+    "r2_additive": 0.33094,
+    "synergy_share": 0.02324,
+    "df": 27,
+    "interaction_info_bits": null
+   },
+   "significance": 1.0,
+   "replication": 0.838,
+   "score": 4.742,
+   "sentence": "weekly study hours × library visits per month × stress level jointly affect final exam score in a non-additive way. Their combination explains an extra 0.79% of variance beyond all their pairwise effects (additive R² 0.331 → 0.339).",
+   "rank": 55,
+   "id": "F055"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Self_Efficacy_Score",
+    "Final_Exam_Score",
+    "Stress_Level"
+   ],
+   "effect": 0.0667,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0715,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.3491,
+    "r_pooled": 0.36651,
+    "r_strata": [
+     0.3757,
+     0.39539,
+     0.32867
+    ],
+    "n_strata": [
+     33228,
+     32804,
+     33968
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 4.67,
+   "sentence": "Self efficacy score → final exam score: marginal r = +0.35, within levels of stress level r = +0.37. The strength depends on stress level (stratum r from +0.33 to +0.40).",
+   "rank": 56,
+   "id": "F056"
+  },
+  {
+   "type": "subgroup",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Self_Efficacy_Score",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours < 14.6",
+    "Self_Efficacy_Score < 3.89"
+   ],
+   "effect": 0.3104,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.307,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.1506,
+   "details": {
+    "cohen_d": -1.04596,
+    "coverage": 0.10943,
+    "n": 10943,
+    "mean_in": 46.96058,
+    "mean_out": 58.83534,
+    "mean_all": 57.53589,
+    "beyond_additive": -0.00708,
+    "beyond_additive_share": 0.00067,
+    "holdout_n": 11016,
+    "holdout_d": -1.03025
+   },
+   "significance": 1.0,
+   "replication": 0.989,
+   "score": 4.622,
+   "sentence": "Students with Weekly_Study_Hours < 14.6 AND Self_Efficacy_Score < 3.89 average 47.0 on final exam score vs 58.8 for everyone else (d = -1.05, 10.9% of students). -0.0 points of that are beyond what the factors predict separately.",
+   "rank": 57,
+   "id": "F057"
+  },
+  {
+   "type": "subgroup",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Self_Efficacy_Score",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours ≥ 21.5",
+    "Self_Efficacy_Score ≥ 5.2"
+   ],
+   "effect": 0.3022,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3006,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.1521,
+   "details": {
+    "cohen_d": 1.00676,
+    "coverage": 0.11163,
+    "n": 11163,
+    "mean_in": 67.68968,
+    "mean_out": 56.25999,
+    "mean_all": 57.53589,
+    "beyond_additive": -0.0247,
+    "beyond_additive_share": 0.00243,
+    "holdout_n": 11189,
+    "holdout_d": 0.99976
+   },
+   "significance": 1.0,
+   "replication": 0.995,
+   "score": 4.571,
+   "sentence": "Students with Weekly_Study_Hours ≥ 21.5 AND Self_Efficacy_Score ≥ 5.2 average 67.7 on final exam score vs 56.3 for everyone else (d = +1.01, 11.2% of students). -0.0 points of that are beyond what the factors predict separately.",
+   "rank": 58,
+   "id": "F058"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Motivation_Score",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.2385,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.2375,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.1922,
+   "details": {
+    "r": 0.22908,
+    "rho": 0.23406,
+    "eta": 0.23847,
+    "mi_bits": 0.03764,
+    "nonlinear_share": 0.07861,
+    "explained_away_share": 0.616,
+    "explained_by": "Self_Efficacy_Score",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 0.996,
+   "score": 4.564,
+   "sentence": "Motivation score and final exam score are linked (max(|r|,|rho|,eta) = 0.24, higher goes with higher). Mostly explained by self efficacy score (62% of it disappears once that is held fixed).",
+   "rank": 59,
+   "id": "F059"
+  },
+  {
+   "type": "subgroup",
+   "variables": [
+    "Previous_GPA",
+    "Self_Efficacy_Score",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Previous_GPA < 2.5",
+    "Self_Efficacy_Score < 3.89"
+   ],
+   "effect": 0.2881,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.2803,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.159,
+   "details": {
+    "cohen_d": -0.80835,
+    "coverage": 0.16607,
+    "n": 16607,
+    "mean_in": 49.88276,
+    "mean_out": 59.05994,
+    "mean_all": 57.53589,
+    "beyond_additive": -0.08079,
+    "beyond_additive_share": 0.01056,
+    "holdout_n": 16487,
+    "holdout_d": -0.78685
+   },
+   "significance": 1.0,
+   "replication": 0.973,
+   "score": 4.456,
+   "sentence": "Students with Previous_GPA < 2.5 AND Self_Efficacy_Score < 3.89 average 49.9 on final exam score vs 59.1 for everyone else (d = -0.81, 16.6% of students). -0.1 points of that are beyond what the factors predict separately.",
+   "rank": 60,
+   "id": "F060"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Internet_Quality",
+    "Midterm_Mark"
+   ],
+   "effect": 0.0904,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0858,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.4995,
+   "details": {
+    "r": 0.08883,
+    "rho": 0.08651,
+    "eta": 0.09042,
+    "mi_bits": 0.00534,
+    "nonlinear_share": 0.0453,
+    "explained_away_share": 0.001,
+    "explained_by": "Number_of_Failed_Courses",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 0.948,
+   "score": 4.284,
+   "sentence": "Internet quality and midterm mark are linked (max(|r|,|rho|,eta) = 0.09, higher goes with higher).",
+   "rank": 61,
+   "id": "F061"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Motivation_Score",
+    "Final_Exam_Score",
+    "Weekly_Study_Hours"
+   ],
+   "effect": 0.0524,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0673,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.22908,
+    "r_pooled": 0.25983,
+    "r_strata": [
+     0.27714,
+     0.27725,
+     0.22481
+    ],
+    "n_strata": [
+     33139,
+     33394,
+     33467
+    ],
+    "p_het": 0.0
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 3.671,
+   "sentence": "Motivation score → final exam score: marginal r = +0.23, within levels of weekly study hours r = +0.26. The strength depends on weekly study hours (stratum r from +0.22 to +0.28).",
+   "rank": 62,
+   "id": "F062"
+  },
+  {
+   "type": "subgroup",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours < 11.3"
+   ],
+   "effect": 0.3246,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3211,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.1017,
+   "details": {
+    "cohen_d": -0.85994,
+    "coverage": 0.1987,
+    "n": 19870,
+    "mean_in": 49.71287,
+    "mean_out": 59.47578,
+    "mean_all": 57.53589,
+    "beyond_additive": -0.18023,
+    "beyond_additive_share": 0.02304,
+    "holdout_n": 19805,
+    "holdout_d": -0.85076
+   },
+   "significance": 1.0,
+   "replication": 0.989,
+   "score": 3.267,
+   "sentence": "Students with Weekly_Study_Hours < 11.3 average 49.7 on final exam score vs 59.5 for everyone else (d = -0.86, 19.9% of students). -0.2 points of that are beyond what the factors predict separately.",
+   "rank": 63,
+   "id": "F063"
+  },
+  {
+   "type": "subgroup",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours < 14.6"
+   ],
+   "effect": 0.3526,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3541,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.09,
+   "details": {
+    "cohen_d": -0.80038,
+    "coverage": 0.33139,
+    "n": 33139,
+    "mean_in": 51.46048,
+    "mean_out": 60.54711,
+    "mean_all": 57.53589,
+    "beyond_additive": -0.0,
+    "beyond_additive_share": 0.0,
+    "holdout_n": 33059,
+    "holdout_d": -0.80494
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 3.173,
+   "sentence": "Students with Weekly_Study_Hours < 14.6 average 51.5 on final exam score vs 60.5 for everyone else (d = -0.80, 33.1% of students). -0.0 points of that are beyond what the factors predict separately.",
+   "rank": 64,
+   "id": "F064"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Region_Type",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.0651,
+   "effect_metric": "correlation ratio eta",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0619,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.5,
+   "details": {
+    "r": null,
+    "rho": null,
+    "eta": null,
+    "mi_bits": 0.00335,
+    "nonlinear_share": null,
+    "explained_away_share": 0.0,
+    "explained_by": null,
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 0.952,
+   "score": 3.097,
+   "sentence": "Region type and final exam score are linked (correlation ratio eta = 0.07).",
+   "rank": 65,
+   "id": "F065"
+  },
+  {
+   "type": "subgroup",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Weekly_Study_Hours ≥ 21.5"
+   ],
+   "effect": 0.3417,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3434,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.09,
+   "details": {
+    "cohen_d": 0.77058,
+    "coverage": 0.33467,
+    "n": 33467,
+    "mean_in": 63.35646,
+    "mean_out": 54.60806,
+    "mean_all": 57.53589,
+    "beyond_additive": -0.0,
+    "beyond_additive_share": 0.0,
+    "holdout_n": 33542,
+    "holdout_d": 0.77442
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 3.076,
+   "sentence": "Students with Weekly_Study_Hours ≥ 21.5 average 63.4 on final exam score vs 54.6 for everyone else (d = +0.77, 33.5% of students). -0.0 points of that are beyond what the factors predict separately.",
+   "rank": 66,
+   "id": "F066"
+  },
+  {
+   "type": "subgroup",
+   "variables": [
+    "Library_Visits_Per_Month",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Library_Visits_Per_Month ≥ 12"
+   ],
+   "effect": 0.311,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3122,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.0957,
+   "details": {
+    "cohen_d": 0.73712,
+    "coverage": 0.26984,
+    "n": 26984,
+    "mean_in": 63.64622,
+    "mean_out": 55.27773,
+    "mean_all": 57.53589,
+    "beyond_additive": 0.06787,
+    "beyond_additive_share": 0.01111,
+    "holdout_n": 27121,
+    "holdout_d": 0.73914
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 2.975,
+   "sentence": "Students with Library_Visits_Per_Month ≥ 12 average 63.6 on final exam score vs 55.3 for everyone else (d = +0.74, 27.0% of students). +0.1 points of that are beyond what the factors predict separately.",
+   "rank": 67,
+   "id": "F067"
+  },
+  {
+   "type": "interaction2",
+   "variables": [
+    "Internet_Quality",
+    "Weekly_Study_Hours",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.0535,
+   "effect_metric": "sqrt(ΔR² non-additive, chance-corrected)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0471,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.6207,
+   "details": {
+    "delta_r2": 0.00286,
+    "r2_full": 0.22075,
+    "r2_additive": 0.21774,
+    "synergy_share": 0.01295,
+    "df": 16,
+    "interaction_info_bits": 0.00575,
+    "gbm_friedman_H2": 0.0108
+   },
+   "significance": 1.0,
+   "replication": 0.881,
+   "score": 2.922,
+   "sentence": "internet quality × weekly study hours jointly affect final exam score in a non-additive way. Their combination explains an extra 0.29% of variance beyond their separate effects (additive R² 0.218 → 0.221).",
+   "rank": 68,
+   "id": "F068"
+  },
+  {
+   "type": "subgroup",
+   "variables": [
+    "Previous_GPA",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Previous_GPA < 2.21"
+   ],
+   "effect": 0.285,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.2796,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.1002,
+   "details": {
+    "cohen_d": -0.74763,
+    "coverage": 0.19695,
+    "n": 19695,
+    "mean_in": 50.71973,
+    "mean_out": 59.20757,
+    "mean_all": 57.53589,
+    "beyond_additive": -0.13688,
+    "beyond_additive_share": 0.02008,
+    "holdout_n": 19664,
+    "holdout_d": -0.73273
+   },
+   "significance": 1.0,
+   "replication": 0.981,
+   "score": 2.803,
+   "sentence": "Students with Previous_GPA < 2.21 average 50.7 on final exam score vs 59.2 for everyone else (d = -0.75, 19.7% of students). -0.1 points of that are beyond what the factors predict separately.",
+   "rank": 69,
+   "id": "F069"
+  },
+  {
+   "type": "subgroup",
+   "variables": [
+    "Previous_GPA",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Previous_GPA < 2.5"
+   ],
+   "effect": 0.3145,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3108,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.09,
+   "details": {
+    "cohen_d": -0.70403,
+    "coverage": 0.33087,
+    "n": 33087,
+    "mean_in": 52.18768,
+    "mean_out": 60.18046,
+    "mean_all": 57.53589,
+    "beyond_additive": -0.0,
+    "beyond_additive_share": 0.0,
+    "holdout_n": 33021,
+    "holdout_d": -0.69519
+   },
+   "significance": 1.0,
+   "replication": 0.988,
+   "score": 2.797,
+   "sentence": "Students with Previous_GPA < 2.5 average 52.2 on final exam score vs 60.2 for everyone else (d = -0.70, 33.1% of students). -0.0 points of that are beyond what the factors predict separately.",
+   "rank": 70,
+   "id": "F070"
+  },
+  {
+   "type": "subgroup",
+   "variables": [
+    "Previous_GPA",
+    "Final_Exam_Score"
+   ],
+   "conditions": [
+    "Previous_GPA ≥ 3.11"
+   ],
+   "effect": 0.309,
+   "effect_metric": "|point-biserial r| of membership (Cohen d in details)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.3104,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.09,
+   "details": {
+    "cohen_d": 0.68895,
+    "coverage": 0.33377,
+    "n": 33377,
+    "mean_in": 62.74691,
+    "mean_out": 54.92525,
+    "mean_all": 57.53589,
+    "beyond_additive": -0.0,
+    "beyond_additive_share": 0.0,
+    "holdout_n": 33356,
+    "holdout_d": 0.69265
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 2.781,
+   "sentence": "Students with Previous_GPA ≥ 3.11 average 62.7 on final exam score vs 54.9 for everyone else (d = +0.69, 33.4% of students). -0.0 points of that are beyond what the factors predict separately.",
+   "rank": 71,
+   "id": "F071"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Number_of_Failed_Courses",
+    "Midterm_Mark"
+   ],
+   "effect": 0.055,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0578,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.4984,
+   "details": {
+    "r": -0.05497,
+    "rho": -0.04887,
+    "eta": 0.05489,
+    "mi_bits": 0.00181,
+    "nonlinear_share": 0.02613,
+    "explained_away_share": 0.003,
+    "explained_by": "Internet_Quality",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 2.739,
+   "sentence": "Number of failed courses and midterm mark are linked (max(|r|,|rho|,eta) = 0.05, higher goes with lower).",
+   "rank": 72,
+   "id": "F072"
+  },
+  {
+   "type": "nonlinear",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Stress_Level"
+   ],
+   "effect": 0.034,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.041,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.7988,
+   "details": {
+    "r": 0.0224,
+    "rho": 0.0133,
+    "eta": 0.03402,
+    "mi_bits": 0.00032,
+    "nonlinear_share": 0.59758,
+    "explained_away_share": 0.0,
+    "explained_by": null,
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 2.717,
+   "sentence": "Weekly study hours and stress level have a curved relationship. A straight line captures |r| = 0.02, but binned means show η = 0.03, so 60% of the explained variation is non-linear.",
+   "rank": 73,
+   "id": "F073"
+  },
+  {
+   "type": "interaction2",
+   "variables": [
+    "Internet_Quality",
+    "Library_Visits_Per_Month",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.0431,
+   "effect_metric": "sqrt(ΔR² non-additive, chance-corrected)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0445,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.6164,
+   "details": {
+    "delta_r2": 0.00186,
+    "r2_full": 0.1813,
+    "r2_additive": 0.17927,
+    "synergy_share": 0.01024,
+    "df": 16,
+    "interaction_info_bits": 0.00324,
+    "gbm_friedman_H2": 0.0055
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 2.656,
+   "sentence": "internet quality × library visits per month jointly affect final exam score in a non-additive way. Their combination explains an extra 0.19% of variance beyond their separate effects (additive R² 0.179 → 0.181).",
+   "rank": 74,
+   "id": "F074"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Number_of_Failed_Courses",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.0517,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0493,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.4988,
+   "details": {
+    "r": -0.05002,
+    "rho": -0.04669,
+    "eta": 0.05173,
+    "mi_bits": 0.00171,
+    "nonlinear_share": 0.0953,
+    "explained_away_share": 0.002,
+    "explained_by": "Internet_Quality",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 0.952,
+   "score": 2.457,
+   "sentence": "Number of failed courses and final exam score are linked (max(|r|,|rho|,eta) = 0.05, higher goes with lower).",
+   "rank": 75,
+   "id": "F075"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Library_Visits_Per_Month",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.4451,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.4479,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.0519,
+   "details": {
+    "r": 0.4249,
+    "rho": 0.4405,
+    "eta": 0.44508,
+    "mi_bits": 0.14321,
+    "nonlinear_share": 0.08898,
+    "explained_away_share": 0.896,
+    "explained_by": "Weekly_Study_Hours",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 2.31,
+   "sentence": "Library visits per month and final exam score are linked (max(|r|,|rho|,eta) = 0.45, higher goes with higher). Mostly explained by weekly study hours (90% of it disappears once that is held fixed).",
+   "rank": 76,
+   "id": "F076"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Region_Type",
+    "Midterm_Mark"
+   ],
+   "effect": 0.0456,
+   "effect_metric": "correlation ratio eta",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0414,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.5,
+   "details": {
+    "r": null,
+    "rho": null,
+    "eta": null,
+    "mi_bits": 0.00142,
+    "nonlinear_share": null,
+    "explained_away_share": 0.0,
+    "explained_by": null,
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 0.909,
+   "score": 2.071,
+   "sentence": "Region type and midterm mark are linked (correlation ratio eta = 0.05).",
+   "rank": 77,
+   "id": "F077"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Final_Exam_Score",
+    "University_Name"
+   ],
+   "effect": 0.076,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.00053,
+   "q": 0.00099,
+   "holdout_effect": 0.0625,
+   "holdout_p": 0.0084,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.44383,
+    "r_pooled": 0.44391,
+    "r_strata": [
+     0.46241,
+     0.39724,
+     0.47328,
+     0.44248,
+     0.45582,
+     0.44322
+    ],
+    "n_strata": [
+     4101,
+     4088,
+     4085,
+     4079,
+     4064,
+     79583
+    ],
+    "p_het": 0.00053
+   },
+   "significance": 0.301,
+   "replication": 0.822,
+   "score": 1.315,
+   "sentence": "Weekly study hours → final exam score: marginal r = +0.44, within levels of university name r = +0.44. The strength depends on university name (stratum r from +0.40 to +0.47).",
+   "rank": 78,
+   "id": "F078"
+  },
+  {
+   "type": "pairwise",
+   "variables": [
+    "Library_Visits_Per_Month",
+    "Midterm_Mark"
+   ],
+   "effect": 0.4106,
+   "effect_metric": "max(|r|,|rho|,eta)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.4111,
+   "holdout_p": 0.0,
+   "replicated": true,
+   "nonobviousness": 0.0296,
+   "details": {
+    "r": 0.40705,
+    "rho": 0.40555,
+    "eta": 0.41059,
+    "mi_bits": 0.11901,
+    "nonlinear_share": 0.01763,
+    "explained_away_share": 0.941,
+    "explained_by": "Weekly_Study_Hours",
+    "mechanical": false
+   },
+   "significance": 1.0,
+   "replication": 1.0,
+   "score": 1.216,
+   "sentence": "Library visits per month and midterm mark are linked (max(|r|,|rho|,eta) = 0.41, higher goes with higher). Mostly explained by weekly study hours (94% of it disappears once that is held fixed).",
+   "rank": 79,
+   "id": "F079"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Final_Exam_Score",
+    "Home_City"
+   ],
+   "effect": 0.0548,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.00362,
+   "q": 0.00604,
+   "holdout_effect": 0.0839,
+   "holdout_p": 0.00049,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.44383,
+    "r_pooled": 0.44388,
+    "r_strata": [
+     0.4862,
+     0.44931,
+     0.43143,
+     0.46112,
+     0.43563,
+     0.44128
+    ],
+    "n_strata": [
+     4937,
+     2614,
+     2612,
+     2595,
+     2590,
+     84652
+    ],
+    "p_het": 0.00362
+   },
+   "significance": 0.222,
+   "replication": 1.0,
+   "score": 0.851,
+   "sentence": "Weekly study hours → final exam score: marginal r = +0.44, within levels of home city r = +0.44. The strength depends on home city (stratum r from +0.43 to +0.49).",
+   "rank": 80,
+   "id": "F080"
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Social_Media_Usage_Hours",
+    "Final_Exam_Score",
+    "University_Name"
+   ],
+   "effect": 0.073,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.019,
+   "q": 0.0271,
+   "holdout_effect": 0.0697,
+   "holdout_p": 0.0357,
+   "replicated": true,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": -0.01516,
+    "r_pooled": -0.01511,
+    "r_strata": [
+     0.02407,
+     -0.0489,
+     -0.00054,
+     -0.0253,
+     -0.03263,
+     -0.01472
+    ],
+    "n_strata": [
+     4101,
+     4088,
+     4085,
+     4079,
+     4064,
+     79583
+    ],
+    "p_het": 0.01899
+   },
+   "significance": 0.157,
+   "replication": 0.955,
+   "score": 0.764,
+   "sentence": "Social media usage hours → final exam score: marginal r = -0.02, within levels of university name r = -0.02. The strength depends on university name (stratum r from -0.05 to +0.02).",
+   "rank": 81,
+   "id": "F081"
+  }
+ ],
+ "failed_replication": [
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Attendance_Rate",
+    "Final_Exam_Score",
+    "Gender"
+   ],
+   "effect": 0.0683,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.00114,
+   "q": 0.00202,
+   "holdout_effect": 0.0516,
+   "holdout_p": 0.0504,
+   "replicated": false,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.05659,
+    "r_pooled": 0.05671,
+    "r_strata": [
+     0.04747,
+     0.0636,
+     0.11581
+    ],
+    "n_strata": [
+     49150,
+     48875,
+     1975
+    ],
+    "p_het": 0.00114
+   },
+   "significance": 0.27,
+   "replication": 0.0,
+   "score": 0.0,
+   "sentence": "Attendance rate → final exam score: marginal r = +0.06, within levels of gender r = +0.06. The strength depends on gender (stratum r from +0.05 to +0.12)."
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Attendance_Rate",
+    "Final_Exam_Score",
+    "Major_Subject"
+   ],
+   "effect": 0.0545,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.00778,
+   "q": 0.0117,
+   "holdout_effect": 0.056,
+   "holdout_p": 0.0578,
+   "replicated": false,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.05659,
+    "r_pooled": 0.05681,
+    "r_strata": [
+     0.08468,
+     0.07001,
+     0.03637,
+     0.09085,
+     0.05513,
+     0.05262
+    ],
+    "n_strata": [
+     5705,
+     5664,
+     5664,
+     5606,
+     5587,
+     71774
+    ],
+    "p_het": 0.00778
+   },
+   "significance": 0.193,
+   "replication": 0.0,
+   "score": 0.0,
+   "sentence": "Attendance rate → final exam score: marginal r = +0.06, within levels of major subject r = +0.06. The strength depends on major subject (stratum r from +0.04 to +0.09)."
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Attendance_Rate",
+    "Final_Exam_Score",
+    "Library_Visits_Per_Month"
+   ],
+   "effect": 0.0531,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0,
+   "holdout_p": 1.0,
+   "replicated": false,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.05659,
+    "r_pooled": 0.06221,
+    "r_strata": [
+     0.03513,
+     0.08819,
+     0.06431
+    ],
+    "n_strata": [
+     32639,
+     30976,
+     36385
+    ],
+    "p_het": 0.0
+   },
+   "significance": 0.955,
+   "replication": 0.0,
+   "score": 0.0,
+   "sentence": "Attendance rate → final exam score: marginal r = +0.06, within levels of library visits per month r = +0.06. The strength depends on library visits per month (stratum r from +0.04 to +0.09)."
+  },
+  {
+   "type": "conditional_moderated",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Final_Exam_Score",
+    "Parent_Education"
+   ],
+   "effect": 0.0514,
+   "effect_metric": "Δr between marginal and within-stratum",
+   "p": 0.00619,
+   "q": 0.00978,
+   "holdout_effect": 0.0,
+   "holdout_p": 1.0,
+   "replicated": false,
+   "nonobviousness": 0.7,
+   "details": {
+    "r_marginal": 0.44383,
+    "r_pooled": 0.44383,
+    "r_strata": [
+     0.4407,
+     0.44447,
+     0.45156,
+     0.44615,
+     0.42313,
+     0.47458
+    ],
+    "n_strata": [
+     34788,
+     25040,
+     14925,
+     10144,
+     10031,
+     5072
+    ],
+    "p_het": 0.00619
+   },
+   "significance": 0.201,
+   "replication": 0.0,
+   "score": 0.0,
+   "sentence": "Weekly study hours → final exam score: marginal r = +0.44, within levels of parent education r = +0.44. The strength depends on parent education (stratum r from +0.42 to +0.47)."
+  },
+  {
+   "type": "interaction3",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Library_Visits_Per_Month",
+    "Sleep_Hours",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.0395,
+   "effect_metric": "sqrt(ΔR² non-additive, chance-corrected)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0063,
+   "holdout_p": 0.227,
+   "replicated": false,
+   "nonobviousness": 0.6108,
+   "details": {
+    "delta_r2": 0.00156,
+    "r2_full": 0.2303,
+    "r2_additive": 0.22822,
+    "synergy_share": 0.00678,
+    "df": 27,
+    "interaction_info_bits": null
+   },
+   "significance": 0.838,
+   "replication": 0.0,
+   "score": 0.0,
+   "sentence": "weekly study hours × library visits per month × sleep hours jointly affect final exam score in a non-additive way. Their combination explains an extra 0.16% of variance beyond all their pairwise effects (additive R² 0.228 → 0.230)."
+  },
+  {
+   "type": "interaction3",
+   "variables": [
+    "Total_Credits_Earned",
+    "Weekly_Study_Hours",
+    "Library_Visits_Per_Month",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.0377,
+   "effect_metric": "sqrt(ΔR² non-additive, chance-corrected)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0094,
+   "holdout_p": 0.0697,
+   "replicated": false,
+   "nonobviousness": 0.6099,
+   "details": {
+    "delta_r2": 0.00142,
+    "r2_full": 0.22988,
+    "r2_additive": 0.22794,
+    "synergy_share": 0.00617,
+    "df": 27,
+    "interaction_info_bits": null
+   },
+   "significance": 0.721,
+   "replication": 0.0,
+   "score": 0.0,
+   "sentence": "total credits earned × weekly study hours × library visits per month jointly affect final exam score in a non-additive way. Their combination explains an extra 0.14% of variance beyond all their pairwise effects (additive R² 0.228 → 0.230)."
+  },
+  {
+   "type": "interaction3",
+   "variables": [
+    "Weekly_Study_Hours",
+    "Library_Visits_Per_Month",
+    "Self_Efficacy_Score",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.0346,
+   "effect_metric": "sqrt(ΔR² non-additive, chance-corrected)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0176,
+   "holdout_p": 0.0,
+   "replicated": false,
+   "nonobviousness": 0.6057,
+   "details": {
+    "delta_r2": 0.0012,
+    "r2_full": 0.33548,
+    "r2_additive": 0.33383,
+    "synergy_share": 0.00356,
+    "df": 27,
+    "interaction_info_bits": null
+   },
+   "significance": 0.703,
+   "replication": 0.0,
+   "score": 0.0,
+   "sentence": "weekly study hours × library visits per month × self efficacy score jointly affect final exam score in a non-additive way. Their combination explains an extra 0.12% of variance beyond all their pairwise effects (additive R² 0.334 → 0.335)."
+  },
+  {
+   "type": "interaction3",
+   "variables": [
+    "Previous_GPA",
+    "Weekly_Study_Hours",
+    "Library_Visits_Per_Month",
+    "Final_Exam_Score"
+   ],
+   "effect": 0.0335,
+   "effect_metric": "sqrt(ΔR² non-additive, chance-corrected)",
+   "p": 0.0,
+   "q": 0.0,
+   "holdout_effect": 0.0232,
+   "holdout_p": 0.0,
+   "replicated": false,
+   "nonobviousness": 0.6047,
+   "details": {
+    "delta_r2": 0.00112,
+    "r2_full": 0.37945,
+    "r2_additive": 0.37791,
+    "synergy_share": 0.00296,
+    "df": 27,
+    "interaction_info_bits": null
+   },
+   "significance": 0.707,
+   "replication": 0.0,
+   "score": 0.0,
+   "sentence": "previous gpa × weekly study hours × library visits per month jointly affect final exam score in a non-additive way. Their combination explains an extra 0.11% of variance beyond all their pairwise effects (additive R² 0.378 → 0.379)."
+  }
+ ]
+}
