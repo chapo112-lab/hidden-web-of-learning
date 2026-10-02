@@ -137,5 +137,16 @@
 
 <footer id="credit"><b>Source:</b> “500k Student Performance and Behavior Dataset” by Waddah Ali (Kaggle), <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. <b>Note:</b> synthetic data, not real students. <b>Method:</b> FDR-corrected tests on 100k records, replicated on a 100k holdout. Associations are not causes.</footer>
 <script src="assets/app.js"></script>
+<!-- Vercel Web Analytics: load only when not served from GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  (function () {
+    if (/(^|\.)github\.io$/.test(location.hostname)) return;
+    var s = document.createElement('script');
+    s.defer = true;
+    s.src = '/_vercel/insights/script.js';
+    document.body.appendChild(s);
+  })();
+</script>
 </body>
 </html>
